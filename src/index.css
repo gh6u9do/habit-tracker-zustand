@@ -1,0 +1,19 @@
+:root {
+  /* основная палитра */
+  --bg-main: #d4e7f6;
+  --bg-card: #ffffff;
+  --text-main: #212529; 
+  --text-muted: #6c757d;
+
+  /* акценты */
+  --color-primary: #10b981;
+  --color-success-bg: #b3ecc3;
+
+  /* категории */
+  --cat-sport: #3b82f6;     
+  --cat-health: #ef4444;    
+  --cat-mind: #8b5cf6;      
+
+  
+}
+

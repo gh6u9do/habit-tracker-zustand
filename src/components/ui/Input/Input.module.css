@@ -1,0 +1,21 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.wrapper__label {
+    color: var(--color-text);
+}
+
+.wrapper__input {
+    padding: 0.2rem 0.5rem;
+
+    border: 2px solid var(--color-border);  
+
+    transition: all 0.2s;
+}
+
+.wrapper__input:focus-visible {
+    outline: none;
+    box-shadow: 0 0 5px 2px var(--color-text-muted);
+}

@@ -17,7 +17,7 @@ type THabitsStore = {
 }
 
 export const useHabitStore = create<THabitsStore>()(
-    persist((set, get) => ({
+    persist((set) => ({
 
         habits: [],
         currentDateStr: new Date().toLocaleDateString('en-CA'),
@@ -69,6 +69,10 @@ export const useHabitStore = create<THabitsStore>()(
 
 
     }), {
-        name: "habits-storage"
+        name: "habits-storage",
+        // в local-storage сохраняем только habits
+        partialize: ((state) => ({
+            habits: state.habits
+        }))
     })
 );

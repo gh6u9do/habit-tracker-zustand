@@ -1,19 +1,166 @@
 :root {
-  /* основная палитра */
-  --bg-main: #d4e7f6;
+  /* --- Цветовая палитра --- */
+
+  /* Светло-серый фон приложения */
+  --bg-main: #dfe1e3;
+  /* Белые карточки */
   --bg-card: #ffffff;
-  --text-main: #212529; 
-  --text-muted: #6c757d;
+  /* Темно-серый основной текст (угольный) */
+  --text-main: #1f2937;
+  /* Светло-серый для второстепенных надписей/дат */
+  --text-muted: #9ca3af;
 
-  /* акценты */
+
+
+  /* Акценты (Зеленый GitHub / Изумруд) */
+
+  /* Основной изумрудный */
   --color-primary: #10b981;
-  --color-success-bg: #b3ecc3;
+  /* Темнее для ховеров */
+  --color-primary-hover: #059669;
+  /* Фоновый зеленый для выполненных дней */
+  --color-success-bg: #e6f4ea;
 
-  /* категории */
-  --cat-sport: #3b82f6;     
-  --cat-health: #ef4444;    
-  --cat-mind: #8b5cf6;      
 
+
+  /* Категории */
+
+  /* Красный */
+  --cat-health: #ef4444;
+  /* Синий */
+  --cat-sport: #3b82f6;
+  /* Фиолетовый */
+  --cat-mind: #8b5cf6;
+
+
+
+  /* --- Размеры и Отступы (Rem-based) --- */
+
+  /* 14px */
+  --font-sm: 0.875rem;
+  /* 16px */
+  --font-md: 1rem;
+  /* 18px */
+  --font-lg: 1.125rem;
+  /* 20px */
+  --font-xl: 1.25rem;
+  /* 24px */
+  --font-2xl: 1.5rem;
+
+  /* 4px */
+  --spacing-xs: 0.25rem;
+  /* 8px */
+  --spacing-sm: 0.5rem;
+  /* 16px */
+  --spacing-md: 1rem;
+  /* 24px */
+  --spacing-lg: 1.5rem;
+  /* 32px */
+  --spacing-xl: 2rem;
+
+
+
+  /* --- Скругления и Бордеры --- */
   
+  /* 6px */
+  --radius-sm: 0.375rem;
+  /* 12px */
+  --radius-md: 0.75rem;
+  /* 16px */
+  --radius-lg: 1rem;
+
+  /* тень */
+  --shadow-main: 0 4px 6px 10px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+
 }
 
+
+body {
+  background-color: var(--bg-main);
+
+  color: var(--text-main);
+
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+
+  padding: 0;
+  margin: 0;
+}
+
+/* Указываем box sizing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Убираем внутренние отступы */
+ul[class],
+ol[class] {
+  padding: 0;
+}
+
+/* Убираем внешние отступы */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+ul[class],
+ol[class],
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Выставляем основные настройки по-умолчанию для body */
+body {
+  min-height: 100vh;
+  scroll-behavior: smooth;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+/* Удаляем стандартную стилизацию для всех ul и il, у которых есть атрибут class*/
+ul[class],
+ol[class] {
+  list-style: none;
+}
+
+/* Элементы a, у которых нет класса, сбрасываем до дефолтных стилей */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Упрощаем работу с изображениями */
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Указываем понятную периодичность в потоке данных у article*/
+article>*+* {
+  margin-top: 1em;
+}
+
+/* Наследуем шрифты для инпутов и кнопок */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Удаляем все анимации и переходы для людей, которые предпочитай их не использовать */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

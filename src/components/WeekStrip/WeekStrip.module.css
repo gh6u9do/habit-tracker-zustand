@@ -1,0 +1,31 @@
+.daysContainer {
+    width: 100%;
+
+    display: flex;
+    justify-content: space-around;
+    gap: var(--spacing-xs);
+}
+
+.day {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+
+    padding: var(--spacing-xs);
+
+    transition: all 0.8s ease;
+
+    cursor: pointer;
+}
+
+.dayActive {
+    box-shadow: 0 0 5px 1px var(--color-primary);
+}
+
+.dayNum {
+    color: var(--text-main);
+}
+
+.dayTitle {
+    color: var(--text-muted);
+}

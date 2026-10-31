@@ -1,0 +1,120 @@
+/* Обёртка-лейбл на всю ширину карточки привычки */
+.wrapper {
+  inline-size: 100%;
+
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+
+  padding: var(--spacing-md);
+
+  background-color: var(--bg-card);
+
+  border-radius: var(--radius-md);
+
+  box-shadow: var(--shadow-main);
+
+  cursor: pointer;
+  
+  user-select: none;
+
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  border: 1px solid transparent;
+}
+
+.wrapper:hover {
+  transform: translateY(-1px);
+
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* Скрываем нативный чекбокс, но оставляем доступным для клавиатуры */
+.hiddenInput {
+  position: absolute;
+
+  opacity: 0;
+
+  inline-size: 0;
+  block-size: 0;
+
+  pointer-events: none;
+}
+
+/* Подсветка карточки при фокусе с клавиатуры (accessibility) */
+.hiddenInput:focus-visible + .customCheckbox {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Базовый кастомный квадратный чекбокс */
+.customCheckbox {
+  position: relative;
+
+  inline-size: 1.25rem;
+  block-size: 1.25rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  border: 2px solid var(--text-muted);
+  border-radius: var(--radius-sm);
+
+  transition: all 0.2s ease;
+  
+}
+
+/* Динамические стили для СОСТОЯНИЯ CHECKED в зависимости от категории */
+.hiddenInput:checked + .customCheckbox.sport {
+  background-color: var(--cat-sport);
+  border-color: var(--cat-sport);
+}
+
+.hiddenInput:checked + .customCheckbox.health {
+  background-color: var(--cat-health);
+  border-color: var(--cat-health);
+}
+
+.hiddenInput:checked + .customCheckbox.mind {
+  background-color: var(--cat-mind);
+  border-color: var(--cat-mind);
+}
+
+/* Белая галочка внутри чекбокса (рисуем через CSS-псевдоэлемент) */
+.customCheckbox::after {
+  position: absolute;
+
+  content: '';
+
+  inline-size: 0.35rem;
+  block-size: 0.6rem;
+
+  border: solid white;
+  border-width: 0 2px 2px 0;
+
+  transform: rotate(45deg) scale(0);
+  
+  top: 2px;
+
+  transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.hiddenInput:checked + .customCheckbox::after {
+  transform: rotate(45deg) scale(1);
+}
+
+/* Текст привычки */
+.checkboxTitle {
+  font-size: var(--font-md);
+  font-weight: 500;
+  color: var(--text-main);
+  transition: color 0.2s ease, text-decoration 0.2s ease;
+}
+
+/* Если выполнено - слегка приглушаем текст и можно кинуть зачеркивание */
+.hiddenInput:checked ~ .checkboxTitle {
+  color: var(--text-muted);
+  text-decoration: line-through;
+}

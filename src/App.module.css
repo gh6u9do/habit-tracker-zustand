@@ -1,0 +1,81 @@
+.appContainer {
+  width: 100%;
+  max-width: 480px;
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+
+  /* центрируем телефон на больших экранах */
+  margin: 0 auto;
+
+  background-color: var(--bg-card);
+
+  padding: var(--spacing-lg) var(--spacing-md);
+
+  box-shadow: var(--shadow-main);
+
+  border-radius: var(--spacing-sm);
+
+  animation: fadeUp 0.8s ease-out forwards;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-transform: uppercase;
+
+  gap: var(--spacing-xs);
+}
+
+.title {
+  font-size: var(--font-2xl);
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.dateContainer {
+  display: flex;
+  color: var(--text-muted);
+  font-size: var(--font-sm);
+}
+
+.blinkDot {
+  color: var(--color-primary);
+  font-weight: bold;
+  animation: pulse 2s infinite ease-in-out;
+}
+
+.mainContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(1rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+
+  0%,
+  100% {
+    opacity: 0.2;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}

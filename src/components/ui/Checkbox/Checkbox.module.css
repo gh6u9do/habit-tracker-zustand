@@ -110,6 +110,7 @@
   font-size: var(--font-md);
   font-weight: 500;
   color: var(--text-main);
+  
   transition: color 0.2s ease, text-decoration 0.2s ease;
 }
 

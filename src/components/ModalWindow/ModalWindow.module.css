@@ -1,0 +1,124 @@
+.modalWrapper {
+    position: fixed;
+
+    display: flex;
+    /* Прижимаем форму к низу */
+    align-items: center;
+    justify-content: center;
+
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    /* Затемнение фона */
+    background-color: rgba(0, 0, 0, 0.4);
+
+    z-index: 1;
+
+    animation: fadeIn 0.3s ease;
+}
+
+.form {
+    inline-size: 100%;
+    max-inline-size: 480px;
+
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+
+    background-color: var(--bg-card);
+
+    border-radius: var(--radius-lg);
+
+    margin-left: var(--spacing-md);
+    margin-right: var(--spacing-md);
+    padding: var(--spacing-lg) var(--spacing-md);
+
+    animation: slideUp 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.selectCategory {
+    inline-size: 100%;
+
+    padding: var(--spacing-sm) var(--spacing-md);
+
+    border: 2px solid var(--text-muted);
+    border-radius: var(--radius-sm);
+
+    background-color: var(--bg-card);
+
+    color: var(--text-main);
+    font-size: var(--font-md);
+
+    cursor: pointer;
+
+    outline: none;
+
+    transition: border-color 0.2s ease;
+}
+
+.selectCategory:focus {
+    border-color: var(--color-primary);
+}
+
+/* Ряд кнопок для выбора дней недели */
+.daysGrid {
+    display: grid;
+
+    grid-template-columns: repeat(7, 1fr);
+
+    gap: var(--spacing-xs);
+}
+
+.day {
+    background-color: var(--bg-main);
+
+    border: 1px solid transparent;
+    border-radius: var(--radius-sm);
+
+    color: var(--text-main);
+    font-size: var(--font-sm);
+    font-weight: 500;
+    text-transform: uppercase;
+
+    cursor: pointer;
+
+    padding: var(--spacing-sm) var(--spacing-xs);
+
+    transition: all 0.2s ease;
+}
+
+.day:hover {
+    background-color: #ededed;
+}
+
+.dayActive {
+    background-color: var(--bg-card);
+
+    border-color: var(--color-primary);
+
+    box-shadow: 0 0 5px 1px var(--color-primary);
+
+    font-weight: 700;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(100%);
+    }
+
+    to {
+        transform: translateY(0);
+    }
+}

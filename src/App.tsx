@@ -1,19 +1,24 @@
 import styles from './App.module.css'
 import { HabitsList } from './components/HabitsList/HabitsList';
+import { ModalWindow } from './components/ModalWindow/ModalWindow';
 import { ProgressBar } from './components/ProgressBar/ProgressBar';
-import { Checkbox } from './components/ui/Checkbox/Checkbox';
 import { WeekStrip } from './components/WeekStrip/WeekStrip';
+import { useState } from 'react';
 
 function App() {
 
+  // получаем текущую дату
   const currentDate = new Date();
   const month = String(currentDate.getMonth() + 1).padStart(2, '0');
   const day = String(currentDate.getDate()).padStart(2, '0');
+
+  // стейт для модалки
+  const [isModalOpen, setIsModalOpen] = useState(false);
   
 
   return (
     <div className={styles['appContainer']}>
-      
+
       <header className={styles.header}>
         <h1 className={styles.title}>habit tracker</h1>
         <div className={styles.dateContainer}>
@@ -30,6 +35,10 @@ function App() {
       <main className={styles.mainContent}>
         <WeekStrip/>
         <HabitsList/>
+        <button className={styles['floatingButton']} onClick={() => setIsModalOpen(true)}>+</button>
+
+        {isModalOpen && <ModalWindow onClose={() => setIsModalOpen(false)} />}
+
       </main>
     </div>
   )

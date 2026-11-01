@@ -25,7 +25,7 @@ export const Checkbox = ({isChecked, title, onChange, category}: TCheckbox) => {
             {/* кастомный чекбокс */}
             <span className={styles['customCheckbox']}></span>
 
-            <span className='checkboxTitle'>
+            <span className={styles['checkboxTitle']}>
                 {title}
             </span>
 

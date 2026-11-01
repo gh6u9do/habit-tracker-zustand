@@ -1,4 +1,8 @@
-export type TCategory = 'health' | 'sport' | 'mind';
+// as const позволяет заморозить массив и сделать его неизменяемым, а значения - точными литералами а не просто строками 
+export const categoriesArr = ['health', 'sport', 'mind'] as const;
+
+// такая запись позволяет получить тип всех элементов, которые можно получить по числовому индексу
+export type TCategory = typeof categoriesArr[number] ;
 
 export type THabit = {
     id: string,

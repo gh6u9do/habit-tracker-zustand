@@ -1,5 +1,6 @@
 import styles from './App.module.css'
 import { HabitsList } from './components/HabitsList/HabitsList';
+import { ProgressBar } from './components/ProgressBar/ProgressBar';
 import { Checkbox } from './components/ui/Checkbox/Checkbox';
 import { WeekStrip } from './components/WeekStrip/WeekStrip';
 
@@ -12,6 +13,7 @@ function App() {
 
   return (
     <div className={styles['appContainer']}>
+      
       <header className={styles.header}>
         <h1 className={styles.title}>habit tracker</h1>
         <div className={styles.dateContainer}>
@@ -23,15 +25,11 @@ function App() {
         </div>
       </header>
 
+      <ProgressBar/>
+
       <main className={styles.mainContent}>
         <WeekStrip/>
         <HabitsList/>
-        <Checkbox 
-          category='health'
-          isChecked
-          title='Чекбокс'
-          onChange={() => {}}
-        />
       </main>
     </div>
   )

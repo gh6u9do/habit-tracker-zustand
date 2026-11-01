@@ -6,7 +6,7 @@ export const HabitsList = () => {
 
     // достаем выбранный день из стора
     const selectedDate = useHabitStore((state) => state.currentDateStr);
-
+    // находим номер выбранного дня, если выбранный день воскресенье то ставим номер 7
     const numSelectedDate = (new Date(selectedDate).getUTCDay()) === 0 ? 7 : new Date(selectedDate).getUTCDay();
 
     // достаем привычки из стора

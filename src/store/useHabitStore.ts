@@ -30,7 +30,8 @@ export const useHabitStore = create<THabitsStore>()(
                     id: crypto.randomUUID(),
                     name,
                     category,
-                    createdAt: new Date().toISOString(),
+                    // сохраняем только дату "YYYY-MM-DD"
+                    createdAt: new Date().toLocaleDateString('en-CA'),
                     completedDates: [],
                     numDays
                 }
@@ -43,7 +44,7 @@ export const useHabitStore = create<THabitsStore>()(
         })),
 
         // экшен установки выбранной даты
-        setCurrentDateStr: (newCurrentDateStr) => set((state) => ({
+        setCurrentDateStr: (newCurrentDateStr) => set(() => ({
             currentDateStr: newCurrentDateStr
         })),
 

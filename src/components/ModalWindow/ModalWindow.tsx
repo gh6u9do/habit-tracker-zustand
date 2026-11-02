@@ -29,6 +29,16 @@ export const ModalWindow = ({onClose}: TModalWindow) => {
         // отменяем дефолтное поведение
         e.preventDefault();
 
+        // если нет названия - не создаем ниче
+        if(newHabitName.trim().length < 1) {
+            return;
+        }
+
+        // если не выбран ни один день - не создаем привычку
+        if(newHabitDays.length < 1) {
+            return;
+        }
+
         // добавляем в стор новую привычку
         addHabitFunc(newHabitName, newHabitCategory, newHabitDays);
 

@@ -93,6 +93,12 @@
     background-color: #ededed;
 }
 
+.day:focus-visible {
+    outline: none;
+
+    border-color: var(--color-primary);
+}
+
 .dayActive {
     background-color: var(--bg-card);
 

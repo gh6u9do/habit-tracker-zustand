@@ -1,6 +1,6 @@
 import styles from './HabitsList.module.css';
 import { useHabitStore } from '../../store/useHabitStore';
-import { Checkbox } from '../ui/Checkbox/Checkbox';
+import { HabitCard } from '../HabitCard/HabitCard';
 
 export const HabitsList = () => {
 
@@ -12,25 +12,24 @@ export const HabitsList = () => {
     // достаем привычки из стора
     const habits = useHabitStore((state) => state.habits);
     // берем только те привычки, которые есть на выбранный день
-    const filteredHabits = habits.filter((habit) => habit.numDays.includes(numSelectedDate));
+    const filteredHabits = habits.filter((habit) => {
+        // смотрим есть ли он в массиве выбранных дней
+        const isCorrectDay = habit.numDays.includes(numSelectedDate);
+        // смотрим существовала ли привычка на выбранный день
+        const isAlreadyCreated = selectedDate >= habit.createdAt;
 
-    // достаем из стора переключатель состояния привычки
-    const toggleFunction = useHabitStore((state) => state.toggleHabit);
+        return isCorrectDay && isAlreadyCreated;
+    })
+
+
 
     return (
         <section className={styles['listWrapper']}>
             {
                 filteredHabits.length > 0 ? (
-                   filteredHabits.map((habit) => (
-                    <div key={habit.id} className={styles['habitCard']}>
-                        <Checkbox
-                            title={habit.name}
-                            isChecked={habit.completedDates.includes(String(selectedDate))}
-                            category={habit.category}
-                            onChange={() => toggleFunction(habit.id, selectedDate) }
-                        />
-                    </div>
-                   ))
+                    filteredHabits.map((habit) => (
+                        <HabitCard key={habit.id} habit={habit} />
+                    ))
                 ) : (
                     <div className={styles['emptyContainer']}>
                         <p className={styles['emptyText']}>На сегодня ничего нет</p>

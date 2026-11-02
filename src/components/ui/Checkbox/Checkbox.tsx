@@ -10,6 +10,13 @@ type TCheckbox = {
 
 export const Checkbox = ({isChecked, title, onChange, category}: TCheckbox) => {
     
+    // в зависимости от категории применяем стили
+    const customCheckboxClasses = [
+        styles['customCheckbox'],
+        category && styles[category]
+    ]
+    .filter(Boolean)
+    .join(' ');
 
 
     return (
@@ -23,7 +30,7 @@ export const Checkbox = ({isChecked, title, onChange, category}: TCheckbox) => {
             />
 
             {/* кастомный чекбокс */}
-            <span className={styles['customCheckbox']}></span>
+            <span className={customCheckboxClasses}></span>
 
             <span className={styles['checkboxTitle']}>
                 {title}

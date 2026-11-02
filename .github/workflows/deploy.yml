@@ -32,7 +32,7 @@ jobs:
 
       # 4. Запускаем проверку TypeScript (чтобы не запушить сломанные типы)
       - name: Type check
-        run: npm run tsc -- --noEmit
+        run: npx tsc --noEmit
         continue-on-error: false # Если типы упадут, деплой остановится
 
       # 5. Собираем проект под продакшн

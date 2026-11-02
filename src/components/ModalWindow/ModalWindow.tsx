@@ -67,7 +67,7 @@ export const ModalWindow = ({onClose}: TModalWindow) => {
     const daysOfWeek = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
     
     return (
-        <div className={styles['modalWrapper']} onClick={(e) => onClose()}>
+        <div className={styles['modalWrapper']} onClick={() => onClose()}>
             <form className={styles['form']} onSubmit={submitModalWindow} onClick={(e) => e.stopPropagation()}>
 
                 <Input 

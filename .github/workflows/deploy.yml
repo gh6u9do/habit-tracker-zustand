@@ -1,0 +1,47 @@
+name: Deploy to GitHub Pages
+
+# Триггер: запускать пайплайн при пуше в ветку main
+on:
+  push:
+    branches:
+      - main # Если у тебя ветка называется master, замени на master
+
+# Разрешения для токена GitHub (необходимы для деплоя)
+permissions:
+  contents: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Скачиваем актуальный код репозитория на виртуальную машину
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # 2. Устанавливаем Node.js нужной версии (LTS)
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-size: 20
+          cache: 'npm' # Кэширование зависимостей ускорит последующие сборки
+
+      # 3. Устанавливаем чистые зависимости (ci вместо install)
+      - name: Install dependencies
+        run: npm ci
+
+      # 4. Запускаем проверку TypeScript (чтобы не запушить сломанные типы)
+      - name: Type check
+        run: npm run tsc -- --noEmit
+        continue-on-error: false # Если типы упадут, деплой остановится
+
+      # 5. Собираем проект под продакшн
+      - name: Build production app
+        run: npm run build
+
+      # 6. Деплоим папку dist на ветку gh-pages
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: dist # Vite по умолчанию собирает код в эту папку
+          branch: gh-pages # Ветка, из которой GitHub Pages будет раздавать сайт
